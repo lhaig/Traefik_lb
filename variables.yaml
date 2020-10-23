@@ -1,0 +1,41 @@
+# Job
+job:
+  datacenters:
+    - 'eu-west-2a'
+    - 'eu-west-2b'
+    - 'eu-west-2c'
+    - 'dc1'
+  region: "global"
+  type: "system"
+# Group
+
+# Docker
+config:
+  image: "traefik:v2.2"
+  network_mode: "host"
+
+# Task
+# Resources
+resources:
+  cpu: 100
+  memory: 128
+  network:
+      mbits: 10
+  port:
+    http: "8080"
+    api: "8081"    
+
+
+
+# Template
+#Traefik Consul Endpoint
+consul:
+  address: "http://127.0.0.1:8500"
+  scheme: "http"
+
+# Service
+service:
+  name: "Traefik"
+  tags:
+    - "traefik"
+    - "global"
